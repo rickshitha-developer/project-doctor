@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Website</title>
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='doctor style.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- bootstrap links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+   <!-- bootstrap links -->
+    <!-- fonts links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <!-- fonts links -->
+	<style>
+	
+
+</style>
+</head>
+<body>
+	<!-- top navbar -->
+    <div class="top-navbar">
+        <p>WELCOME TO OUR Clinic</p>
+        <div class="icons">
+              <a href="{{ url_for('login') }}"><i class="fa fa-sign-in"></i>Login</a>
+           <a href="{{ url_for('register') }}"><i class="fa fa-user"></i>Register</a>
+        </div>
+    </div>
+	<!-- navbar -->
+<nav class="navbar navbar-expand-lg" id="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html" id="logo">
+      <span id="span1">Medi</span>Care <span>Clinic</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span><img src="{{ url_for('static', filename='doctor images/menu.png') }}"alt="Menu Icon" width="30px"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url_for('services') }}" class="nav-link">Services</a>
+
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Departments
+          </a>
+          <ul class="dropdown-menu" style="background-color: rgb(67 0 86);">
+            <li><a class="dropdown-item" href="#">Cardiology</a></li>
+            <li><a class="dropdown-item" href="#">Pediatrics</a></li>
+            <li><a class="dropdown-item" href="#">Dermatology</a></li>
+            <li><a class="dropdown-item" href="#">Neurology</a></li>
+            <li><a class="dropdown-item" href="#">Orthopedics</a></li>
+            <li><a class="dropdown-item" href="#">ENT</a></li>
+            <li><a class="dropdown-item" href="#">Gynecology</a></li>
+            <li><a class="dropdown-item" href="#">Radiology</a></li>
+            <li><a class="dropdown-item" href="#">General Surgery</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+         <a href="{{ url_for('about') }}" class="nav-link">About</a>
+
+        </li>
+        <li class="nav-item">
+          <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
+        </li>
+      </ul>
+      <form class="d-flex" id="search">
+        <input class="form-control me-2" type="search" placeholder="Search services or doctors">
+        <button class="btn btn-warning" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Services Section -->
+<div class="container my-5" id="services">
+  <h3 class="text-center">Our Services</h3>
+  <hr />
+  <p class="text-center mb-4">
+    At <strong><span style="color:gold;">Medi</span>Care Clinic</strong>, we
+    provide comprehensive medical services designed to meet your health needs
+    with precision and care. Our experienced specialists use modern technology
+    to deliver exceptional patient outcomes.
+  </p>
+
+  <!-- Services Cards -->
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="service-card p-4 border rounded shadow-sm text-center h-100">
+        <i class="fa-solid fa-heart-pulse fa-3x mb-3" style="color:gold;"></i>
+        <h5>Cardiology</h5>
+        <p>
+          Advanced heart health diagnostics, treatment, and rehabilitation
+          programs to keep your heart strong.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="service-card p-4 border rounded shadow-sm text-center h-100">
+        <i class="fa-solid fa-baby fa-3x mb-3" style="color:gold;"></i>
+        <h5>Pediatrics</h5>
+        <p>
+          Compassionate care for infants, children, and adolescents by
+          certified pediatricians.
+        </p>
+      </div>
+    </div>
+   <div class="col-md-4">
+	  <div class="service-card p-4 border rounded shadow-sm text-center h-100">
+		<i class="fa-solid fa-person-pregnant fa-3x mb-3" style="color:gold;"></i>
+		<h5>Gynecology</h5>
+		<p>
+		  Comprehensive women's health services including pregnancy care, fertility advice, and hormonal treatments.
+		</p>
+	  </div>
+	</div>
+
+    <div class="col-md-4">
+      <div class="service-card p-4 border rounded shadow-sm text-center h-100">
+        <i class="fa-solid fa-brain fa-3x mb-3" style="color:gold;"></i>
+        <h5>Neurology</h5>
+        <p>
+          Diagnosis and treatment of nervous system disorders with
+          comprehensive care.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="service-card p-4 border rounded shadow-sm text-center h-100">
+        <i class="fa-solid fa-bone fa-3x mb-3" style="color:gold;"></i>
+        <h5>Orthopedics</h5>
+        <p>
+          Care for bones, joints, and muscles including surgery and
+          rehabilitation.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="service-card p-4 border rounded shadow-sm text-center h-100">
+        <i class="fa-solid fa-stethoscope fa-3x mb-3" style="color:gold;"></i>
+        <h5>General Medicine</h5>
+        <p>
+          Comprehensive general health care services to keep you and your
+          family healthy.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call To Action -->
+  <div
+    class="text-center mt-5 p-4 rounded"
+    style="background-color: rgb(67 0 86 / 0.1); border: 1px solid #430056;" >
+    <h4>Need Personalized Care?</h4>
+    <p>
+      Schedule a consultation with our experts to discuss your health concerns
+      in detail.
+    </p>
+    <a href="{{ url_for('appointment') }}" class="btn btn-warning">Book an Appointment</a>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="mt-5">
+    <h3 class="text-center">What Our Patients Say</h3>
+    <hr />
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+      style="max-width: 1000px; margin: 0 auto;">
+      <div class="carousel-inner">
+        <div class="carousel-item active text-center">
+          <p class="fst-italic">
+            "MediCare Clinic helped me through a difficult heart surgery with
+            exceptional care and support."
+          </p>
+          <h6>- John D.</h6>
+        </div>
+        <div class="carousel-item text-center">
+          <p class="fst-italic">
+            "The pediatric team is amazing! They treated my child with great
+            kindness and professionalism."
+          </p>
+          <h6>- Sarah M.</h6>
+        </div>
+        <div class="carousel-item text-center">
+          <p class="fst-italic">
+            "I highly recommend their dermatology department for skin issues —
+            very knowledgeable doctors."
+          </p>
+          <h6>- Priya K.</h6>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" style="background-color: gold; border-radius: 50%;"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+         <span class="carousel-control-next-icon" style="background-color: gold; border-radius: 50%;"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <!-- Contact Info -->
+        <div class="col-lg-3 col-md-6 footer-contact">
+          <h3>MediCare Clinic</h3>
+          <p>
+            No,59 Kamber Street<br>
+           Potheri, Chengalpattu<br>
+            TamilNadu<br><br>
+          <strong>Phone:</strong> +92 123 4567890<br>
+          <strong>Email:</strong> contact@medicareclinic.com<br>
+		  </p>
+        </div>
+
+        <!-- Useful Links -->
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Medical Services -->
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Our Departments</h4>
+          <ul>
+            <li><a href="#">Cardiology</a></li>
+            <li><a href="#">Pediatrics</a></li>
+            <li><a href="#">Dermatology</a></li>
+            <li><a href="#">Neurology</a></li>
+            <li><a href="#">Radiology</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Follow Us</h4>
+          <p style="color:white;">Stay connected for health tips and clinic updates.</p>
+          <div class="social-links mt-3">
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div class="container py-5">
+    <div class="copyright">
+      &copy; 2025 <strong><span>MediCare Clinic</span></strong>. All rights reserved.
+    </div>
+    <div class="credits">
+      Designed by <a href="#">Rickshitha</a>
+    </div>
+  </div>
+</footer>
+<!-- footer -->
+
+<!-- Back to Top Button -->
+<a href="#" class="arrow">
+ <img src="{{ url_for('static', filename='doctor images/arrow.png') }}" alt="Doctor Image">
+</a>
+
+
+<!-- Bootstrap 5 JS Bundle (includes Popper.js) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

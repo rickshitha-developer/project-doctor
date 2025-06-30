@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Website</title>
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='doctor style.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- bootstrap links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+   <!-- bootstrap links -->
+    <!-- fonts links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <!-- fonts links -->
+	<style>
+	
+
+</style>
+</head>
+<body>
+	<!-- top navbar -->
+    <div class="top-navbar">
+        <p>WELCOME TO OUR Clinic</p>
+        <div class="icons">
+              <a href="{{ url_for('login') }}"><i class="fa fa-sign-in"></i>Login</a>
+           <a href="{{ url_for('register') }}"><i class="fa fa-user"></i>Register</a>
+        </div>
+    </div>
+	<!-- navbar -->
+<nav class="navbar navbar-expand-lg" id="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html" id="logo">
+      <span id="span1">Medi</span>Care <span>Clinic</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span><img src="{{ url_for('static', filename='doctor images/menu.png') }}"alt="Menu Icon" width="30px"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url_for('services') }}" class="nav-link">Services</a>
+
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Departments
+          </a>
+          <ul class="dropdown-menu" style="background-color: rgb(67 0 86);">
+            <li><a class="dropdown-item" href="#">Cardiology</a></li>
+            <li><a class="dropdown-item" href="#">Pediatrics</a></li>
+            <li><a class="dropdown-item" href="#">Dermatology</a></li>
+            <li><a class="dropdown-item" href="#">Neurology</a></li>
+            <li><a class="dropdown-item" href="#">Orthopedics</a></li>
+            <li><a class="dropdown-item" href="#">ENT</a></li>
+            <li><a class="dropdown-item" href="#">Gynecology</a></li>
+            <li><a class="dropdown-item" href="#">Radiology</a></li>
+            <li><a class="dropdown-item" href="#">General Surgery</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+         <a href="{{ url_for('about') }}" class="nav-link">About</a>
+
+        </li>
+        <li class="nav-item">
+          <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
+        </li>
+      </ul>
+      <form class="d-flex" id="search">
+        <input class="form-control me-2" type="search" placeholder="Search services or doctors">
+        <button class="btn btn-warning" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Appointment Form -->
+
+<div class="container my-5">
+  <h2 class="text-center mb-4"><i class="fa-solid fa-calendar-check"></i> Book Your Appointment</h2>
+  <p class="text-center text-muted mb-4">Please fill out the form below to schedule a consultation with our specialists.</p>
+  
+  <form class="p-4 border rounded bg-light shadow"   method="POST" action="{{ url_for('appointment') }}">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="name" class="form-label"><i class="fa-solid fa-user"></i> Full Name</label>
+        <input type="text" class="form-control" id="name" placeholder="John Doe" name="name" required>
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="form-label"><i class="fa-solid fa-envelope"></i> Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="phone" class="form-label"><i class="fa-solid fa-phone"></i> Phone Number</label>
+        <input type="tel" class="form-control" id="phone" placeholder="+91 9876543210" required>
+      </div>
+      <div class="col-md-6">
+        <label for="gender" class="form-label"><i class="fa-solid fa-venus-mars"></i> Gender</label>
+        <select class="form-select" id="gender" required>
+          <option value="">-- Select Gender --</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="service" class="form-label"><i class="fa-solid fa-stethoscope"></i> Select Service</label>
+      <select class="form-select" id="service" name="service" required>
+        <option value="">-- Choose a Service --</option>
+        <option>General Checkup</option>
+        <option>Cardiology</option>
+        <option>Dermatology</option>
+        <option>ENT</option>
+        <option>Neurology</option>
+      </select>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="date" class="form-label"><i class="fa-solid fa-calendar-days"></i> Preferred Date</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+      </div>
+      <div class="col-md-6">
+        <label for="time" class="form-label"><i class="fa-solid fa-clock"></i> Preferred Time</label>
+        <input type="time" class="form-control" id="time"  name="time" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="notes" class="form-label"><i class="fa-solid fa-comment-dots"></i> Brief Symptoms / Comments</label>
+      <textarea class="form-control" id="notes" rows="3" name="notes" placeholder="Describe your condition or symptoms..."></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100"><i class="fa-solid fa-paper-plane"></i> Submit Appointment Request</button>
+  </form>
+</div>
+
+
+
+<!-- Main Section -->
+<div class="container my-5">
+  <h2 class="text-center mb-4"><i class="fa-solid fa-notes-medical"></i> Book an Appointment</h2>
+  <p class="text-center text-muted mb-4">Choose your medical service and book an appointment online with ease.</p>
+
+  <div class="row g-4">
+
+    <!-- General Checkup -->
+    <div class="col-md-4">
+      <div class="card service-card">
+        <img src="https://www.verywellhealth.com/thmb/kPptfEk8fwFSlFZFGDEH2rKUL7Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/doctor-checkup-885591934-5b0a7d36a474be003e5a6d65.jpg" class="card-img-top" alt="General Checkup">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fa-solid fa-user-md"></i> General Checkup</h5>
+          <p class="card-text">Routine health examination and wellness check.</p>
+          <p><span class="text-muted text-decoration-line-through">₹700</span> <span class="text-success fw-bold ms-2">₹500</span></p>
+          <a href="appointment-form.html" class="book-btn"><i class="fa-solid fa-calendar-check"></i> Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cardiology -->
+    <div class="col-md-4">
+      <div class="card service-card">
+        <img src="https://www.hopkinsmedicine.org/-/media/images/health/1_-conditions/heart-disease/heart-health-sitting.jpg" class="card-img-top" alt="Cardiology">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fa-solid fa-heart-pulse"></i> Cardiology</h5>
+          <p class="card-text">Heart health checkup and ECG by top cardiologists.</p>
+          <p><span class="text-muted text-decoration-line-through">₹1800</span> <span class="text-success fw-bold ms-2">₹1500</span></p>
+          <a href="appointment-form.html" class="book-btn"><i class="fa-solid fa-calendar-check"></i> Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENT -->
+    <div class="col-md-4">
+      <div class="card service-card">
+        <img src="https://entofathens.com/wp-content/uploads/2020/10/ENT-Doctor.jpg" class="card-img-top" alt="ENT">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fa-solid fa-ear-listen"></i> ENT</h5>
+          <p class="card-text">Ear, nose and throat treatment and diagnosis.</p>
+          <p><span class="text-muted text-decoration-line-through">₹900</span> <span class="text-success fw-bold ms-2">₹700</span></p>
+          <a href="appointment-form.html" class="book-btn"><i class="fa-solid fa-calendar-check"></i> Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Neurology -->
+    <div class="col-md-4">
+      <div class="card service-card">
+        <img src="https://www.verywellhealth.com/thmb/ikuwygnuyZTz1PIg3YZ0Sl39nmE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/neurologist-doctor-5b04c107ff1b780037c5f54c.jpg" class="card-img-top" alt="Neurology">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fa-solid fa-brain"></i> Neurology</h5>
+          <p class="card-text">Brain & nervous system consultation and scans.</p>
+          <p><span class="text-muted text-decoration-line-through">₹2500</span> <span class="text-success fw-bold ms-2">₹2100</span></p>
+          <a href="appointment-form.html" class="book-btn"><i class="fa-solid fa-calendar-check"></i> Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pediatrics -->
+    <div class="col-md-4">
+      <div class="card service-card">
+        <img src="https://www.verywellfamily.com/thmb/6UGDJ4OG-1mVOYvV_bm9TUmBmyE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/pediatrician-56a500935f9b58b7d0dff1c8.jpg" class="card-img-top" alt="Pediatrics">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fa-solid fa-baby"></i> Pediatrics</h5>
+          <p class="card-text">Child health & immunization services.</p>
+          <p><span class="text-muted text-decoration-line-through">₹1000</span> <span class="text-success fw-bold ms-2">₹850</span></p>
+          <a href="appointment-form.html" class="book-btn"><i class="fa-solid fa-calendar-check"></i> Book Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gynecology -->
+    <div class="col-md-4">
+      <div class="card service-card">
+        <img src="https://cdn-prod.medicalnewstoday.com/content/images/articles/320/320111/a-gynecologist-with-a-patient.jpg" class="card-img-top" alt="Gynecology">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fa-solid fa-female"></i> Gynecology</h5>
+          <p class="card-text">Women's health, pregnancy, and fertility services.</p>
+          <p><span class="text-muted text-decoration-line-through">₹1200</span> <span class="text-success fw-bold ms-2">₹950</span></p>
+          <a href="appointment-form.html" class="book-btn"><i class="fa-solid fa-calendar-check"></i> Book Now</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- footer -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <!-- Contact Info -->
+        <div class="col-lg-3 col-md-6 footer-contact">
+          <h3>MediCare Clinic</h3>
+          <p>
+            No,59 Kamber Street<br>
+           Potheri, Chengalpattu<br>
+            TamilNadu<br><br>
+          <strong>Phone:</strong> +92 123 4567890<br>
+          <strong>Email:</strong> contact@medicareclinic.com<br>
+		  </p>
+        </div>
+
+        <!-- Useful Links -->
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Medical Services -->
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Our Departments</h4>
+          <ul>
+            <li><a href="#">Cardiology</a></li>
+            <li><a href="#">Pediatrics</a></li>
+            <li><a href="#">Dermatology</a></li>
+            <li><a href="#">Neurology</a></li>
+            <li><a href="#">Radiology</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Follow Us</h4>
+          <p style="color:white;">Stay connected for health tips and clinic updates.</p>
+          <div class="social-links mt-3">
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div class="container py-5">
+    <div class="copyright">
+      &copy; 2025 <strong><span>MediCare Clinic</span></strong>. All rights reserved.
+    </div>
+    <div class="credits">
+      Designed by <a href="#">Rickshitha</a>
+    </div>
+  </div>
+</footer>
+<!-- footer -->
+
+<!-- Back to Top Button -->
+<a href="#" class="arrow">
+ <i><img src="{{ url_for('static', filename='doctor images/arrow.png') }}" alt="Doctor Image"></i>
+</a>
+
+
+<!-- Bootstrap 5 JS Bundle (includes Popper.js) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
